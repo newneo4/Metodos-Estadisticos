@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build-next": "cross-env NEXT_PUBLIC_FRAMEWORK=next next build",
+    "build": "npm build-next",
     "start": "next start",
     "lint": "next lint"
   },
