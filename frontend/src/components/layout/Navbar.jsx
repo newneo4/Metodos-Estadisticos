@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <header>
-        <nav className=' fixed flex w-full p-8 bg-black'>
+        <nav className=' fixed flex w-full p-8 bg-black z-50'>
             <div className='flex w-full font-titulo text-2xl hover:text-[#DA4167] hover:cursor-pointer
             '>
                 <Link href = '/'>

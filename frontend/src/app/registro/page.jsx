@@ -9,8 +9,8 @@ export default function Registro() {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
-    <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 py-28">
-      <div className="w-[50vh] h-[80vh] border-white border-4 border-double rounded-lg pt-16 flex flex-col items-center text-center font-titulo px-14">
+    <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 pt-28">
+      <div className="w-[50vh] h-[90%] border-white border-4 border-double rounded-lg pt-8 flex flex-col items-center text-center font-titulo px-14">
         <span className="font-titulo text-4xl mb-10">Registro</span>
 
         <div className="flex flex-col items-start w-full">
@@ -44,7 +44,7 @@ export default function Registro() {
         <button className="border-double border-4 border-white rounded-lg w-60 h-16 font-bold text-xl hover:bg-white hover:text-black">
           REGISTRARSE
         </button>
-        <div className="mt-2 flex gap-1 w-full flex-col">
+        <div className="mt-2 flex gap-1 w-full">
           <span>¿Ya tienes una cuenta?</span>
           <Link href='/login' className="hover:text-[#DA4167] hover:cursor-pointer">
             Iniciar sesión
