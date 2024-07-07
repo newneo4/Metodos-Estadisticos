@@ -9,13 +9,13 @@ export default function Footer() {
           <span className="text-lg font-semibold">Mi Empresa</span>
         </div>
         <div className="flex space-x-4 mb-4 md:mb-0 w-1/3 justify-center">
-          <Link href="/about" className='hover:text-[#DA4167] hover:cursor-pointer'>
+          <Link href="#" className='hover:text-[#DA4167] hover:cursor-pointer'>
             Sobre Nosotros
           </Link>
-          <Link href="/services" className='hover:text-[#DA4167] hover:cursor-pointer'>
+          <Link href="#" className='hover:text-[#DA4167] hover:cursor-pointer'>
             Servicios
           </Link>
-          <Link href="/contact" className='hover:text-[#DA4167] hover:cursor-pointer'>
+          <Link href="#" className='hover:text-[#DA4167] hover:cursor-pointer'>
             Contacto
           </Link>
         </div>
