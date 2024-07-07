@@ -9,7 +9,7 @@ export default function Registro() {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
-    <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 pt-28">
+    <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 pt-28 bg-black">
       <div className="w-[50vh] h-[90%] border-white border-4 border-double rounded-lg pt-8 flex flex-col items-center text-center font-titulo px-14">
         <span className="font-titulo text-4xl mb-10">Registro</span>
 
