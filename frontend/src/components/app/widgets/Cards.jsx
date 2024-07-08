@@ -3,7 +3,7 @@ import { Button, Card, CardBody, CardFooter, CardHeader, Typography } from '@mat
 
 const Cards = ({ titulo }) => {
   return (
-    <Card color="gray" className="mt-6 w-96 hover:scale-110">
+    <Card color="gray" className="mt-6 w-96 hover:scale-110 box-border">
       <CardHeader className="relative h-56">
         <img
           src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
