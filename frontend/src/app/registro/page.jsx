@@ -20,7 +20,7 @@ export default function Registro() {
             id="usuario"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="mb-10 w-full"
+            className="mb-5 w-full text-black"
           />
 
           <label htmlFor="password" className="text-xl mb-2">Contraseña:</label>
@@ -29,7 +29,7 @@ export default function Registro() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mb-10 w-full"
+            className="mb-5 w-full text-black"
           />
 
           <label htmlFor="password-confirm" className="text-xl mb-2">Confirmar contraseña:</label>
@@ -38,7 +38,7 @@ export default function Registro() {
             id="password-confirm"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="mb-10 w-full"
+            className="mb-5 w-full text-black"
           />
         </div>
         <button className="border-double border-4 border-white rounded-lg w-60 h-16 font-bold text-xl hover:bg-white hover:text-black">

@@ -5,7 +5,7 @@ import Image from 'next/image';
 const Hero = () => {
   return (
     <div className='w-full h-[100vh] flex' id='hero'>
-      <div className='w-1/2 h-full flex justify-start p-40'>
+      <div className='md:w-1/2 h-full flex md:justify-start justify-center p-40 w-full items-center'>
         <div className='flex flex-col gap-8'>
           <a className='text-5xl typing-effect' name="hero">BIENVENIDOS</a>
           <span className='text-3xl font-titulo text-[#DA4167]'>¿Estas listo para aprender los métodos estadísticos?</span>
@@ -14,7 +14,7 @@ const Hero = () => {
           </span>
         </div>
       </div>
-      <div className='w-1/2 h-full flex items-center justify-center py-20'>
+      <div className='md:w-1/2 md:h-full md:flex items-center justify-center py-20 hidden'>
         <Image src="/home-image.jpeg" width={600} height={600} alt='Imagen home' className='size-10/12'/>
       </div>
     </div>

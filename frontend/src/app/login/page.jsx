@@ -19,7 +19,7 @@ export default function Login() {
             id="usuario"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="mb-10 w-full"
+            className="mb-5 w-full text-black"
           />
 
           <label htmlFor="password" className="text-xl mb-2">Contraseña:</label>
@@ -28,7 +28,7 @@ export default function Login() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mb-10 w-full"
+            className="mb-5 w-full text-black"
           />
         </div>
         <span className="hover:text-[#DA4167] hover:cursor-pointer text-center mb-10">
