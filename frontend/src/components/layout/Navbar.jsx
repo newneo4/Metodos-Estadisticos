@@ -10,15 +10,15 @@ const Navbar = () => {
 
   return (
     <header>
-        <nav className=' fixed flex w-full p-8 bg-black z-50 text-white'>
+        <nav className=' fixed flex w-full p-8 bg-black z-50 text-white h-auto'>
             <div className='flex w-full font-titulo text-2xl hover:text-[#DA4167] hover:cursor-pointer
             '>
                 <Link href = '/'>
                     METODOS ESTADISTICOS
                 </Link>
             </div>
-            <div className='flex w-full items-center justify-end'>
-                <ul className='flex gap-14 text-xl font-titulo'>
+            <div className='flex w-full items-center justify-end h-auto'>
+                <ul className='flex gap-14 text-xl font-titulo w-full justify-end h-full'>
                     <li>
                         <a
                             href="#hero"
