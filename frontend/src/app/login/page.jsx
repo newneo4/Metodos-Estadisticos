@@ -2,10 +2,16 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter()
+
+  const handleLogin = () =>{
+    router.push('/intranet')
+  }
 
   return (
     <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 pt-28 bg-black">
@@ -34,7 +40,8 @@ export default function Login() {
         <span className="hover:text-[#DA4167] hover:cursor-pointer text-center mb-10">
           ¿Olvidaste tu contraseña?
         </span>
-        <button className="border-double border-4 border-white rounded-lg w-60 h-16 font-bold text-xl hover:bg-white hover:text-black">
+        <button className="border-double border-4 border-white rounded-lg w-60 h-16 font-bold text-xl hover:bg-white hover:text-black"
+          onClick={() => handleLogin()}>
           INGRESAR
         </button>
         <div className="mt-2 flex gap-1">

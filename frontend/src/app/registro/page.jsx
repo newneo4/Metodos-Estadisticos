@@ -2,11 +2,17 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Registro() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const router = useRouter()
+
+  const handleRegister = ()=>{
+    router.push('/intranet')
+  }
 
   return (
     <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 pt-28 bg-black">
@@ -41,7 +47,8 @@ export default function Registro() {
             className="mb-5 w-full text-black"
           />
         </div>
-        <button className="border-double border-4 border-white rounded-lg w-60 h-16 font-bold text-xl hover:bg-white hover:text-black">
+        <button className="border-double border-4 border-white rounded-lg w-60 h-16 font-bold text-xl hover:bg-white hover:text-black"
+          onClick={() => handleRegister()}>
           REGISTRARSE
         </button>
         <div className="mt-2 flex gap-1 w-full">

@@ -9,9 +9,9 @@ const Funciones = () => {
             <span className='font-titulo text-3xl'>METODOS</span>
         </div>
         <div className='w-full h-[85%] grid md:grid-cols-3 gap-20'>
-            <Cards titulo={"Metodo 1"}/>
-            <Cards titulo={"Metodo 2"}/>
-            <Cards titulo={"Metodo 3"}/>
+            <Cards titulo={"Metodo 1"} descripcion={"descripcion"} probar={"Ver"}/>
+            <Cards titulo={"Metodo 2"} descripcion={"descripcion"} probar={"Ver"}/>
+            <Cards titulo={"Metodo 3"} descripcion={"descripcion"} probar={"Ver"}/>
         </div>
     </div>
   )
