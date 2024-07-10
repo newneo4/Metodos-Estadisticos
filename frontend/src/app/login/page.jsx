@@ -14,7 +14,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 pt-28 bg-black"
+    <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 pt-28 bg-black text-white"
     style={{ backgroundImage: "url('/fondo.gif')" }}>
       <div className="box-border w-[50vh] h-[90%] border-white border-4 border-double rounded-lg py-20 flex flex-col items-center text-center font-titulo px-14 justify-evenly">
         <span className="font-titulo text-4xl mb-10">¿Ya estás registrado?</span>
