@@ -59,7 +59,7 @@ const HotellingPage = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Método de hotelling</h1>
+      <h1 className="text-2xl font-bold mb-4">Método de Hotelling</h1>
       <input 
         type="file" 
         accept='.xlsx, .xls'

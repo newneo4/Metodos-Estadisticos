@@ -1,11 +1,23 @@
-import React from 'react'
+'use client';
 
-const layout = ({children}) => {
+import React, { useContext, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import NavbarIntranet from '../../components/layout/NavbarIntranet';
+
+const IntranetLayout = ({ children }) => {
+  const router = useRouter();
+
+  if (typeof window === 'undefined' || !localStorage.getItem('users')) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className='flex min-h-screen w-full flex-col md:px-20 pt-20 bg-black px-10 text-white'>
-        {children}
+    <div className='flex min-h-screen w-full flex-col text-white'
+      style={{ backgroundImage: "url('/fondo.gif')" }}>
+      <NavbarIntranet/>
+      {children}
     </div>
-  )
-}
+  );
+};
 
-export default layout
+export default IntranetLayout;

@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={inter.className} style={{ backgroundImage: "url('/fondo.gif')" }}>
+      <body className={inter.className}>
         {!noLayoutPaths && <Navbar />}
         {children}
         {!noLayoutPaths && <Footer

@@ -3,7 +3,7 @@ import { Button, Card, CardBody, CardFooter, CardHeader, Typography } from '@mat
 
 const Cards = ({ titulo, descripcion, probar, accion }) => {
   return (
-    <Card color="gray" className="flex mt-6 md:w-96 hover:scale-110 box-border justify-center h-auto text-white">
+    <Card color="gray" className="flex mt-6 md:w-96 hover:scale-110 box-border justify-center h-auto text-white md:w-[90%] mx-2">
       <CardBody>
         <Typography variant="h5" color="white" className="mb-2  font-titulo">
           {titulo}
