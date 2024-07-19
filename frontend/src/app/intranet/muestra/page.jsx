@@ -83,17 +83,17 @@ const CalculationPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-gray-800 px-10 pt-40 opacity-80 pb-20 text-white">
-      <h1 className="text-2xl font-bold mb-4">Cálculo de Tamaño de Muestra</h1>
+    <div className="flex min-h-screen  w-full flex-col bg-gray-800 opacity-80 px-5 pt-40 pb-10 text-white">
+      <h1 className="text-2xl font-bold mb-4 text-center">Cálculo de Tamaño de Muestra</h1>
 
-      <div className='flex w-full'>
-        <div className='w-1/2 border-r-2 border-white border-solid'>
+      <div className='flex flex-col md:flex-row'>
+        <div className='md:w-1/2 flex flex-col md:border-r-2 md:border-white md:border-solid md:px-10'>
           <div className="mb-4">
             <label className="block mb-2">Seleccionar Método:</label>
             <select
               value={method}
               onChange={(e) => setMethod(e.target.value)}
-              className="p-2 bg-gray-900 border border-gray-600 rounded"
+              className="p-2 bg-gray-900 border border-gray-600 rounded w-full"
             >
               <option value="proporciones_infinita">Proporciones Poblacion Infinita</option>
               <option value="proporciones_finite">Proporciones Poblacion Finita</option>
@@ -101,7 +101,7 @@ const CalculationPage = () => {
               <option value="promedios_finite">Promedios Poblacion Finita</option>
             </select>
           </div>
-          <div className='grid grid-cols-2 w-full'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full'>
             <div className="mb-4">
               <label className="block mb-2">Valor Z:</label>
               <input
@@ -109,7 +109,7 @@ const CalculationPage = () => {
                 name="Z"
                 value={data.Z}
                 onChange={handleChange}
-                className="p-2 bg-gray-900 border border-gray-600 rounded"
+                className="p-2 bg-gray-900 border border-gray-600 rounded w-full"
                 step="any"
               />
             </div>
@@ -122,7 +122,7 @@ const CalculationPage = () => {
                   name="p"
                   value={data.p}
                   onChange={handleChange}
-                  className="p-2 bg-gray-900 border border-gray-600 rounded"
+                  className="p-2 bg-gray-900 border border-gray-600 rounded w-full"
                   step="any"
                 />
               </div>
@@ -136,7 +136,7 @@ const CalculationPage = () => {
                   name="q"
                   value={data.q}
                   onChange={handleChange}
-                  className="p-2 bg-gray-900 border border-gray-600 rounded"
+                  className="p-2 bg-gray-900 border border-gray-600 rounded w-full"
                   step="any"
                 />
               </div>
@@ -149,7 +149,7 @@ const CalculationPage = () => {
                 name="E"
                 value={data.E}
                 onChange={handleChange}
-                className="p-2 bg-gray-900 border border-gray-600 rounded"
+                className="p-2 bg-gray-900 border border-gray-600 rounded w-full"
                 step="any"
               />
             </div>
@@ -162,7 +162,7 @@ const CalculationPage = () => {
                   name="N"
                   value={data.N}
                   onChange={handleChange}
-                  className="p-2 bg-gray-900 border border-gray-600 rounded"
+                  className="p-2 bg-gray-900 border border-gray-600 rounded w-full"
                   step="any"
                 />
               </div>
@@ -176,27 +176,27 @@ const CalculationPage = () => {
                   name="D"
                   value={data.D}
                   onChange={handleChange}
-                  className="p-2 bg-gray-900 border border-gray-600 rounded"
+                  className="p-2 bg-gray-900 border border-gray-600 rounded w-full"
                   step="any"
                 />
               </div>
             )}
           </div>
-          <div className='w-full flex items-center justify-center'>
+          <div className='md:w-1/4 w-full flex items-center justify-center'>
             <button 
               onClick={calculateMethod} 
-              className="bg-gray-900 hover:bg-white text-white font-bold py-2 px-4 rounded my-4 border-4 border-double hover:text-black"
+              className="bg-gray-900 hover:bg-white text-white font-bold py-2 px-4 rounded my-4 border-4 border-double hover:text-black w-full"
             >
               Calcular
             </button>
           </div>
         </div>
-        <div className='w-1/2 mx-auto px-10'>
+        <div className='md:w-1/2 flex flex-col items-center md:items-start px-4'>
           {results && (
             <div className="mt-4 text-white font-titulo gap-4 flex flex-col">
-              <span className="text-3xl">Resultados</span>
+              <span className="text-2xl md:text-3xl">Resultados</span>
               <div>
-                <span className="text-2xl">Tamaño de muestra calculado:</span>
+                <span className="text-xl md:text-2xl">Tamaño de muestra calculado:</span>
                 <p>{`n = ${results.n}`}</p>
               </div>
             </div>

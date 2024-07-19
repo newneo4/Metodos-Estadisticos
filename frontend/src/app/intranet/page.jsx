@@ -32,7 +32,7 @@ const Intranet = () => {
   };
 
   return (
-      <div className='flex min-h-screen w-full flex-col bg-gray-800 px-10 opacity-80 p-20'>
+      <div className='flex min-h-screen w-full flex-col bg-gray-800 px-10 opacity-80 px-20 pt-40 md:pt-28'>
         <div className='my-auto'>
           <span className='text-2xl font-titulo'>METODOS</span>
           <div className='grid md:grid-cols-2 w-full justify-around m-auto lg:grid-cols-3'>

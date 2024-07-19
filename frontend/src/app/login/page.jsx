@@ -9,11 +9,11 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-  let isValidUser = null
-  let usuarios = null
+  let isValidUser = null;
+  let usuarios = null;
 
   if (typeof window !== 'undefined') {
-     usuarios  = JSON.parse(localStorage.getItem('users'))
+    usuarios = JSON.parse(localStorage.getItem('users'));
   }
 
   const handleLogin = () => {
@@ -22,7 +22,7 @@ export default function Login() {
       return;
     }
 
-    if(usuarios){
+    if (usuarios) {
       isValidUser = usuarios.some(usuario => usuario.username === username && usuario.password === password);
     }
 
@@ -36,43 +36,46 @@ export default function Login() {
   };
 
   return (
-    <div className="flex md:h-[100vh] min-h-screen w-full flex-col items-center justify-center md:px-20 md:pt-28 bg-black text-white pt-40 pb-10 px-10"
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8 pt-40 bg-black text-white"
       style={{ backgroundImage: "url('/fondo.gif')" }}>
       <Toaster />
-      <div className="box-border w-[50vh] h-[90%] border-white border-4 border-double rounded-lg py-20 flex flex-col items-center text-center font-titulo md:px-14 px-10 justify-evenly">
-        <span className="font-titulo text-4xl mb-10">¿Ya estás registrado?</span>
+      <div className="w-full max-w-md border-white border-4 border-double rounded-lg py-10 px-6 flex flex-col items-center text-center font-titulo">
+        <span className="text-3xl mb-6 font-bold">¿Ya estás registrado?</span>
 
-        <div className="flex flex-col items-start w-full">
-          <label htmlFor="usuario" className="text-xl mb-2">Nombre de usuario:</label>
+        <div className="flex flex-col gap-4 w-full">
+          <label htmlFor="usuario" className="text-lg mb-2">Nombre de usuario:</label>
           <input
             type="text"
             id="usuario"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="mb-5 w-full text-black"
+            className="mb-4 p-2 w-full text-black rounded"
             required
           />
 
-          <label htmlFor="password" className="text-xl mb-2">Contraseña:</label>
+          <label htmlFor="password" className="text-lg mb-2">Contraseña:</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mb-5 w-full text-black"
+            className="mb-4 p-2 w-full text-black rounded"
             required
           />
         </div>
-        <span className="hover:text-[#DA4167] hover:cursor-pointer text-center mb-10">
+
+        <span className="text-sm hover:text-[#DA4167] hover:cursor-pointer mb-6">
           ¿Olvidaste tu contraseña?
         </span>
-        <button className="border-double border-4 border-white rounded-lg w-60 h-16 font-bold text-xl hover:bg-white hover:text-black"
+
+        <button className="w-full py-3 border-2 border-white rounded-lg font-bold text-xl hover:bg-white hover:text-black transition"
           onClick={handleLogin}>
           INGRESAR
         </button>
-        <div className="mt-2 flex gap-1">
-          <span>¿No tienes una cuenta?</span>
-          <Link href='/registro' className="hover:text-[#DA4167] hover:cursor-pointer">
+
+        <div className="mt-4 flex flex-col gap-2">
+          <span className="text-sm">¿No tienes una cuenta?</span>
+          <Link href='/registro' className="text-[#DA4167] hover:underline">
             Regístrate
           </Link>
         </div>
@@ -80,4 +83,3 @@ export default function Login() {
     </div>
   );
 }
-
