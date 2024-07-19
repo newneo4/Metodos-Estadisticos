@@ -4,7 +4,7 @@ import Cards from '../widgets/Cards';
 
 const Funciones = () => {
   return ( 
-    <div className='box-border w-full h-[70vh] md:block flex gap-10 p-10' id="metodos">
+    <div className='box-border w-full h-[70vh] md:block flex flex-col gap-10 p-10 overflow-scroll md:overflow-hidden' id="metodos">
         <div className='w-full h-[15%]'>
             <span className='font-titulo text-3xl'>ALGUNOS DE NUESTROS MÉTODOS</span>
         </div>

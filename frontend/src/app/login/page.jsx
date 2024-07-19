@@ -36,10 +36,10 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-[100vh] w-full flex-col items-center justify-center px-20 pt-28 bg-black text-white"
+    <div className="flex md:h-[100vh] min-h-screen w-full flex-col items-center justify-center md:px-20 md:pt-28 bg-black text-white pt-40 pb-10 px-10"
       style={{ backgroundImage: "url('/fondo.gif')" }}>
       <Toaster />
-      <div className="box-border w-[50vh] h-[90%] border-white border-4 border-double rounded-lg py-20 flex flex-col items-center text-center font-titulo px-14 justify-evenly">
+      <div className="box-border w-[50vh] h-[90%] border-white border-4 border-double rounded-lg py-20 flex flex-col items-center text-center font-titulo md:px-14 px-10 justify-evenly">
         <span className="font-titulo text-4xl mb-10">¿Ya estás registrado?</span>
 
         <div className="flex flex-col items-start w-full">

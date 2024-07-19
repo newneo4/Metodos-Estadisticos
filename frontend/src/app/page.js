@@ -5,7 +5,7 @@ import Hero from "../components/app/home/Hero";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-between px-20 py-10" 
+    <div className="min-h-screen flex flex-col items-center justify-between w-full" 
       style={{ backgroundImage: "url('/fondo.gif')" }}>
           <Hero />
           <Funciones />
