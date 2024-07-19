@@ -1,12 +1,17 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react'
+import {React, useState} from 'react'
 
 const Navbar = () => {
     const [user,setUser] = [""];
-    const router = useRouter()
+    const router = useRouter();
+    const [menuVisible, setMenuVisible] = useState(false);
+    const toggleMenu = () => {
+        setMenuVisible(!menuVisible);
+    };
 
   return (
     <header>
@@ -17,7 +22,7 @@ const Navbar = () => {
                     METODOS ESTADISTICOS
                 </Link>
             </div>
-            <div className='flex w-full items-center justify-end h-auto'>
+            <div className='md:flex w-full items-center justify-end h-auto hidden'>
                 <ul className='flex gap-14 text-xl font-titulo w-full justify-end h-full'>
                     <li>
                         <a
@@ -41,6 +46,11 @@ const Navbar = () => {
                         </Link>
                     </li>
                 </ul>
+            </div>
+            <div className='flex mx-3 md:hidden'>
+                <button onClick={toggleMenu}>
+                    <Image src="/menu.svg" width={40} height={40}/>
+                </button>
             </div>
         </nav>
     </header>

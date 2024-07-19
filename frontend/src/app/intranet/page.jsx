@@ -23,6 +23,9 @@ const Intranet = () => {
       case 4:
         router.push('intranet/taguchi');
         break;
+      case 5:
+        router.push('intranet/muestra');
+        break;
       default:
         break;
     }
@@ -58,9 +61,10 @@ const Intranet = () => {
               accion={() => handleRouters(4)}
             />
             <Cards
-              titulo={"Metodo 5"}
-              descripcion={"Descripción del Método 5"}
+              titulo={"Calculadora de muestra"}
+              descripcion={"Herramienta sencilla para determinar el tamaño de muestra necesario para estudios de proporciones o promedios. Ajusta los parámetros y obtén resultados precisos para tu investigación"}
               probar={"seleccionar"}
+              accion={() => handleRouters(5)}
             />
             <Cards
               titulo={"Metodo 6"}

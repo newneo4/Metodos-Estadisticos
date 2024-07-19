@@ -18,8 +18,6 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {!noLayoutPaths && <Navbar />}
         {children}
-        {!noLayoutPaths && <Footer
-         />}
       </body>
     </html>
   );
