@@ -14,7 +14,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const MilPage = () => {

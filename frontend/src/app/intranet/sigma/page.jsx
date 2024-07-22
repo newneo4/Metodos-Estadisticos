@@ -13,6 +13,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import toast, { Toaster } from 'react-hot-toast';
 
 ChartJS.register(
   CategoryScale,
@@ -24,9 +25,7 @@ ChartJS.register(
   Legend
 );
 
-import toast, { Toaster } from 'react-hot-toast';
-
-const TaguchiPage = () => {
+const SeisPage = () => {
   const [data, setData] = useState([]);
   const [results, setResults] = useState(null);
   const [chartData, setChartData] = useState(null); 
@@ -70,13 +69,14 @@ const TaguchiPage = () => {
     );
   };
 
-  const calculateTaguchiMethod = () => {
+  const calculateSeisSigmaMethod = () => {
     if (data.length === 0) {
       toast.error("Por favor carga un archivo Excel primero.");
       return;
     }
   
-    const requiredColumns = ['C', 'N', 'LES'];
+    // Validar que las columnas 'defect' y 'value' existan
+    const requiredColumns = ['defect', 'value'];
     const columns = Object.keys(data[0]);
     const missingColumns = requiredColumns.filter(col => !columns.includes(col));
     if (missingColumns.length > 0) {
@@ -84,61 +84,51 @@ const TaguchiPage = () => {
       return;
     }
   
+    // Validar que los valores en la columna 'defect' sean 0 o 1
     for (let i = 0; i < data.length; i++) {
       const row = data[i];
-      if (typeof row.C !== 'number' || isNaN(row.C)) {
-        toast.error(`La columna 'C' debe contener solo valores numéricos. Error en la fila ${i + 1}.`);
+      if (row.defect !== 0 && row.defect !== 1) {
+        toast.error(`La columna 'defect' debe contener solo 0 o 1. Error en la fila ${i + 1}.`);
         return;
       }
-      if (typeof row.N !== 'number' || isNaN(row.N)) {
-        toast.error(`La columna 'N' debe contener solo valores numéricos. Error en la fila ${i + 1}.`);
-        return;
-      }
-      if (typeof row.LES !== 'number' || isNaN(row.LES)) {
-        toast.error(`La columna 'LES' debe contener solo valores numéricos. Error en la fila ${i + 1}.`);
+      if (typeof row.value !== 'number') {
+        toast.error(`La columna 'value' debe contener solo valores numéricos. Error en la fila ${i + 1}.`);
         return;
       }
     }
   
-    const c = data[0]['C'];
-    const N = data[0]['N'];
-    const LES = data[0]['LES'];
-    const error = (LES - N).toFixed(2);
+    // Implementación del método Seis Sigma
+    const defects = data.reduce((sum, row) => sum + (row.defect ? 1 : 0), 0);
+    const totalOpportunities = data.length;
+    const defectRate = defects / totalOpportunities;
+    const dpmo = defectRate * 1000000;
+    const sigma = 1.5 - Math.log10(dpmo / 1000000);
   
-    const CoeFunc = c / (error * error);
-  
-    console.log(error);
-    const N_les = parseFloat(N) + parseFloat(error);
-    const N_inf = parseFloat(N) - parseFloat(error);
-    const valores_x = [];
-    const valores_y = [];
-  
-    for (let index = N_inf; index.toFixed(2) <= N_les ; index += 0.05) {
-      const valor = CoeFunc * (index - N) * (index - N);
-      valores_y.push(valor.toFixed(2));
-      valores_x.push(index.toFixed(2).toString());
-    }
+    // Generar datos para el gráfico
+    const labels = data.map((row, index) => index);
+    const values = data.map(row => row.value);
   
     const dataset = {
-      labels: valores_x,
+      labels,
       datasets: [
         {
-          label: 'Valores Y',
-          data: valores_y,
-          fill: true,
-          borderColor: 'rgb(255,255,255)',
-          tension: 0.1,
-        },
-      ],
+          label: 'Valores',
+          data: values,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderWidth: 1,
+        }
+      ]
     };
   
-    setResults({ c, N, LES, error, CoeFunc, dataset });
-  };  
+    setResults({ defects, totalOpportunities, defectRate, dpmo, sigma, dataset });
+  };
+  
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-gray-800 px-10 pt-40 opacity-80 pb-20 text-white">
-      <Toaster/>
-      <h1 className="text-2xl font-bold mb-4">Método de Taguchi</h1>
+      <Toaster />
+      <h1 className="text-2xl font-bold mb-4">Método de Seis Sigma</h1>
       <input 
         type="file" 
         accept='.xlsx, .xls'
@@ -146,7 +136,7 @@ const TaguchiPage = () => {
         className="mb-4"
       />
 
-{data.length > 0 && (
+      {data.length > 0 && (
         <div className="flex overflow-x-auto text-white">
           <table className="min-w-full bg-gray-800 border mb-4 border-gray-200 rounded-lg shadow-sm text-center">
             <thead>
@@ -176,14 +166,13 @@ const TaguchiPage = () => {
         </div>
       )}
 
-
       {data.length > 0 && (
         <div>
           <button 
-            onClick={calculateTaguchiMethod} 
+            onClick={calculateSeisSigmaMethod} 
             className="bg-gray-900 hover:bg-white text-white font-bold py-2 px-4 rounded my-4 border-4 border-double hover:text-black"
           >
-            Calcular Método de Taguchi
+            Calcular Método de Seis Sigma
           </button>
 
           {results && (
@@ -192,17 +181,18 @@ const TaguchiPage = () => {
               <div>
                 <span className="text-2xl flex flex-col underline">PASO 1 :</span>
                 <div className="flex flex-col px-10">
-                  <span className="text-xl">Hallamos la funcion de perdida</span>
-                  <p>{`Costo de la desviacion : ${results.c}`}</p>
-                  <p>{`Limite de especificacion superior : ${results.LES}`}</p>
-                  <p>{`Valor nominal de la caracteristica :  ${results.N}`}</p>
-                  <p>{`Definimos la funcion de perdida :  ${results.c}/(${results.LES} - ${results.N})^2 * (x-${results.N})^2 = ${results.CoeFunc.toFixed(2)} * (x-${results.N})^2`}</p>
+                  <span className="text-xl">Cálculo de Métricas</span>
+                  <p>{`Defectos: ${results.defects}`}</p>
+                  <p>{`Oportunidades Totales: ${results.totalOpportunities}`}</p>
+                  <p>{`Tasa de Defectos: ${results.defectRate.toFixed(4)}`}</p>
+                  <p>{`DPMO: ${results.dpmo.toFixed(2)}`}</p>
+                  <p>{`Valor Sigma: ${results.sigma.toFixed(2)}`}</p>
                 </div>
               </div>
               <div>
                 <span className="text-2xl flex flex-col underline">PASO 2 :</span>
                 <div className="flex flex-col px-10">
-                  <span className="text-xl">Tabulamos valores</span>
+                  <span className="text-xl">Visualización de Datos</span>
                   {results.dataset && (
                     <Line
                       width={300}
@@ -221,29 +211,29 @@ const TaguchiPage = () => {
                         },
                         scales: {
                           x: {
-                            type: 'linear', // Tipo de escala para el eje X
+                            type: 'linear',
                             title: {
                               display: true,
                               text: 'Valores X',
                             },
                             grid: {
-                              color: 'white', // Color de las líneas de la cuadrícula en el eje X
+                              color: 'white',
                             },
                             ticks: {
-                              color: 'white', // Color de los ticks en el eje X
+                              color: 'white',
                             },
                           },
                           y: {
-                            type: 'linear', // Tipo de escala para el eje Y
+                            type: 'linear',
                             title: {
                               display: true,
                               text: 'Valores Y',
                             },
                             grid: {
-                              color: 'white', // Color de las líneas de la cuadrícula en el eje Y
+                              color: 'white',
                             },
                             ticks: {
-                              color: 'white', // Color de los ticks en el eje Y
+                              color: 'white',
                             },
                           },
                         },
@@ -276,4 +266,4 @@ const TaguchiPage = () => {
   );
 };
 
-export default TaguchiPage;
+export default SeisPage;

@@ -26,13 +26,16 @@ const Intranet = () => {
       case 5:
         router.push('intranet/muestra');
         break;
+      case 6:
+        router.push('intranet/sigma');
+        break;
       default:
         break;
     }
   };
 
   return (
-      <div className='flex min-h-screen w-full flex-col bg-gray-800 px-10 opacity-80 px-20 pt-40 md:pt-28'>
+      <div className='flex min-h-screen w-full flex-col bg-gray-800  opacity-80 px-20 pt-40 md:pt-28'>
         <div className='my-auto'>
           <span className='text-2xl font-titulo'>METODOS</span>
           <div className='grid md:grid-cols-2 w-full justify-around m-auto lg:grid-cols-3'>
@@ -67,9 +70,10 @@ const Intranet = () => {
               accion={() => handleRouters(5)}
             />
             <Cards
-              titulo={"Metodo 6"}
-              descripcion={"Descripción del Método 6"}
+              titulo={"Metodo de Seis Sigma"}
+              descripcion={"El método Seis Sigma mejora la calidad de los procesos reduciendo defectos y variabilidad mediante técnicas estadísticas y la metodología DMAIC."}
               probar={"seleccionar"}
+              accion={() => handleRouters(6)}
             />
           </div>
         </div>
