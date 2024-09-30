@@ -32,7 +32,7 @@ const NavbarIntranet = () => {
       <nav className='fixed flex w-full p-8 bg-gray-900 z-50 text-white'>
         <div className='flex w-full font-titulo text-2xl hover:text-[#DA4167] hover:cursor-pointer'>
           <Link href='/intranet'>
-            METODOS ESTADISTICOS
+            STATNEXUS
           </Link>
         </div>
         <div className='md:flex w-full items-center justify-end hidden'>
